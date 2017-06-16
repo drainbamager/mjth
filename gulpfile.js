@@ -20,10 +20,11 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('docs/dist/js'));
 
     gulp.src([
-            'src/js/googlemap/**/*.js'
+            'src/js/firebase/**/*.js'
+            ,'src/js/googlemap/**/*.js'
         ])
         .pipe(uglify())
-        .pipe(concat('googlemap.js'))
+        .pipe(concat('getmemory.js'))
         .pipe(gulp.dest('docs/dist/js'));
 
 });

@@ -26,6 +26,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>            
                 <h4 class="modal-title">How does remembering this make you feel today?</h4>
               </div>
               <div class="modal-body">
@@ -40,7 +41,7 @@
                     <button id="btnEmotion7" type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"></button>                    
                 </p>
                 <p>
-                    <div class="submissionfield"><input name="txtMyEmotion" id="txtMyEmotion" type="title" id="title" size="25" maxlength="50" placeholder="Type here (optional)"></div>  
+                    <div class="submissionfield"><input name="txtMyEmotion" id="txtMyEmotion" type="title" id="title" size="23" maxlength="50" placeholder="Type here (optional)"></div>  
 
                 </p>
               </div>
@@ -59,87 +60,16 @@
                     <h2 class="text-muted text-center">Thanks you.</h2>
                     <h4 class="text-muted text-center">Your input has been added to the map on the TV above.</h4>
                     <h1 class="text-center"><i class="text-center text-muted fa fa-smile-o fa-5x"></i></h1>
+                    <h5 class="text-muted text-center">This window will automatically close in <span id="spCounter">5</span> seconds.</h5>
                 </p>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
  
-        <script src="dist/js/script.js"></script>
-        <script src="dist/js/googlemap.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1JMonqtwOGoIV9naPeY2sqV9qVY6_JXU"></script>
-        <script>
-        var map;
-      var data = {
-        sender: null,
-        timestamp: null,
-        lat: null,
-        lng: null
-      };        
-       function initMap() {
-         var mapOptions = {
-            center: new google.maps.LatLng(10  ,0),
-            zoom: 3
-        };        
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-         map.addListener('click', function(e) {
-              data.lat = e.latLng.lat();
-              data.lng = e.latLng.lng();
-            $('#modGetEmotion').modal('show');
-            });
-       }
-      initMap();
-        </script>
-        <script>
-
-            var arrEmotions = ['Happy','Thankful','Proud','Joy','Admiring', 'Humble', 'Gracious', 'Grateful','Blissful','Optimistic','Thrilled','Wonderful','Motivated','Exhilarated','Loved','Youthful', 'Inspired', 'Hopeful','Motivated', 'Honored','Privileged', 'Good','Comfortable','Blessed','Uplifted', 'Smiling', 'Supported'];
-            
-            resetPage();
-            function resetPage(){
-                reSortEmotion();   
-                $('#txtMyEmotion').val('');             
-            }
-            function reSortEmotion(){
-                var arrEmotionRank = [];
-                for (var i = 0; i < arrEmotions.length; i++) {
-                  var objEmotionRank = {emotion: null, rank:null};
-                  var lgRank = Math.random();
-                  console.log(arrEmotions[i]);
-                  objEmotionRank.emotion = arrEmotions[i];
-                  objEmotionRank.rank = lgRank;
-                  arrEmotionRank.push(objEmotionRank);
-                }
-                arrEmotionRank.sort(compareEmotionRank);
-                console.log(arrEmotionRank);
-                for (var i = 0, len = 7; i < len; i++) {
-
-                      //console.log(i + ' ' + arrEmotionRank[i].emotion + ' ' + arrEmotionRank[i].rank);
-                    var strButtonID = i+1;
-                    $('#btnEmotion'+strButtonID).html(arrEmotionRank[i].emotion);
-                }
-            }
-            function compareEmotionRank(a, b) {
-              // Use toUpperCase() to ignore character casing
-              const genreA = a.rank;
-              const genreB = b.rank;
-
-              let comparison = 0;
-              if (genreA > genreB) {
-                comparison = 1;
-              } else if (genreA < genreB) {
-                comparison = -1;
-              }
-              return comparison;
-            }  
-            $('#modGetEmotion').on('hidden.bs.modal', function (e) {
-              resetPage();
-            })
-            $('#btnCloseModal').on('click', function (e) {
-              $('#modGetEmotion').modal('hide');
-             $('#modConfirmation').modal('show');  
-             setTimeout(function(){ $('#modConfirmation').modal('hide'); }, 5000);            
-            })
-
-        </script>
+        <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+        <script src="dist/js/script.js"></script>
+        <script src="dist/js/getmemory.js"></script>
     </body>
 </html>
