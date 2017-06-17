@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Journey to Homage - Show First Memories</title>
+        <link href="dist/css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!-- Begin page content -->
+        <div id="map"></div>
+        <div id="header" class="text-center">
+            <div id="header-content">
+                <h1>Think of your first memory of Mowlana Hazir Imam</h1>
+                <p>Inidicate where you were at that time by click on the map below.</p>
+            </div>
+        </div>        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1JMonqtwOGoIV9naPeY2sqV9qVY6_JXU&libraries=visualization"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+        <script src="dist/js/script.js"></script>
+        <script>
+        var map;
+       var mapOptions = {
+          center: new google.maps.LatLng(10  ,0),
+          zoom: 3
+      };        
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          var config = {
+            apiKey: "AIzaSyBhodCUY9cJN_g_78a3fVXeB4ypjEe4GgY",
+            authDomain: "dj2017-2804f.firebaseapp.com",
+            databaseURL: "https://dj2017-2804f.firebaseio.com",
+            projectId: "dj2017-2804f",
+            storageBucket: "",
+            messagingSenderId: "994859069594"
+          };
+          firebase.initializeApp(config);
+         function initAuthentication(onAuthSuccess) {
+          firebase.authAnonymously(function(error, authData) {
+            if (error) {
+              console.log('Login Failed!', error);
+            } else {
+              data.sender = authData.uid;
+              onAuthSuccess();
+            }
+          }, {remember: 'sessionOnly'});  // Users will get a new id for every session.
+        }
+
+// Create a heatmap.
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: [],
+          map: map,
+          radius: 16
+        });
+
+        initAuthentication(initFirebase.bind(undefined, heatmap));
+  function initFirebase(heatmap) {
+          // 10 minutes before current time.
+          var startTime = new Date().getTime() - (1000 * 60 * 60 * 24 * 30);//Get data for last 1 month
+
+          // Reference to the clicks in Firebase.
+          var clicks = firebase.database().ref().child('clicks');
+
+          // Listener for when a click is added.
+          clicks.orderByChild('timestamp').startAt(startTime).on('child_added',
+            function(snapshot) {
+
+              // Get that click from firebase.
+              var newPosition = snapshot.val();
+              var point = new google.maps.LatLng(newPosition.lat, newPosition.lng);
+              var elapsed = new Date().getTime() - newPosition.timestamp;
+
+              // Add the point to  the heatmap.
+              heatmap.getData().push(point);
+            }
+          );
+        }
+
+        </script>
+    </body>
+</html>
