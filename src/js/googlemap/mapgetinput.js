@@ -20,7 +20,7 @@
               var marker = new google.maps.Marker({
                       position: e.latLng, 
                       map: map
-                  });           
+                  });
             $('#modGetEmotion').modal('show');
             });
        }

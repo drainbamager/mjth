@@ -3,7 +3,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minifyCSS = require('gulp-minify-css'),
     sass = require('gulp-sass'),
-    addsrc = require('gulp-add-src');
+    addsrc = require('gulp-add-src'),
+    js_obfuscator = require('gulp-js-obfuscator'),
+    htmlmin = require('gulp-htmlmin');
 
 /**
  * Minify and combine JS files, including jQuery and Bootstrap
@@ -16,19 +18,34 @@ gulp.task('scripts', function() {
             'src/js/global/**/*.js'
         ])
         .pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('script.js'))
         .pipe(gulp.dest('docs/dist/js'));
 
     gulp.src([
-            'src/js/firebase/**/*.js'
-            ,'src/js/googlemap/**/*.js'
+            'src/js/firebase/firebaseauth.js'
+            ,'src/js/firebase/firebaseaddlocations.js'
+            ,'src/js/googlemap/mapgetinput.js'
         ])
         .pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('getmemory.js'))
+        .pipe(gulp.dest('docs/dist/js'));
+    
+    gulp.src([
+            'src/js/googlemap/memoriesmap.js'
+        ])
+        .pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
+        .pipe(concat('memoriesmap.js'))
         .pipe(gulp.dest('docs/dist/js'));
 
 });
-
+gulp.task('minify', function() {
+  return gulp.src('src/html/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('docs'));
+});
 /**
  * Build SASS, combine with Bootstrap CSS and minify
  */
