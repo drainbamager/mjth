@@ -7,13 +7,12 @@
       };
        var mapOptions = {
           center: new google.maps.LatLng(10  ,0),
-          zoom: 3
+          zoom: 2
       };        
       var arrEmotions = ['Happy','Thankful','Proud','Joy','Admiring', 'Humble', 'Gracious', 'Grateful','Blissful','Optimistic','Thrilled','Wonderful','Motivated','Exhilarated','Loved','Youthful', 'Inspired', 'Hopeful','Motivated', 'Honored','Privileged', 'Good','Comfortable','Blessed','Uplifted', 'Smiling', 'Supported'];
        function initMap() {
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
          map.addListener('click', function(e) {
-              console.log('click');
               data.lat = e.latLng.lat();
               data.lng = e.latLng.lng();
               addToFirebase(data);              
@@ -70,7 +69,6 @@
             function startCounter(){
               var counter = 5;
               id = setInterval(function() {
-                  console.log(counter);
                   counter--;
                   if(counter < 0) {
                       clearInterval(id);

@@ -12,6 +12,8 @@
           firebase.authAnonymously(function(error, authData) {
             if (error) {
               console.log('Login Failed!', error);
+              Raven.captureMessage('Error loggin on to firebase: ' + error, {level: 'error' });
+
             } else {
               data.sender = authData.uid;
               onAuthSuccess();
