@@ -1,5 +1,6 @@
           var map;         
           var config = {
+
             apiKey: "AIzaSyBhodCUY9cJN_g_78a3fVXeB4ypjEe4GgY",
             authDomain: "dj2017-2804f.firebaseapp.com",
             databaseURL: "https://dj2017-2804f.firebaseio.com",
@@ -8,7 +9,9 @@
             messagingSenderId: "994859069594"
           };
           firebase.initializeApp(config);
-
+          function setupPage() {
+              initMap();
+          }
           function initMap() {
             map = new google.maps.Map(document.getElementById('map')
               , {
@@ -56,3 +59,4 @@
           heatmapData.removeAt(i);
         });
       }
+      setupPage();

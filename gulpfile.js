@@ -17,8 +17,8 @@ gulp.task('scripts', function() {
             'node_modules/bootstrap/dist/js/bootstrap.js',
             'src/js/global/**/*.js'
         ])
-        .pipe(babel({presets: ['es2015']}))
-        .pipe(uglify())
+        //.pipe(babel({presets: ['es2015']}))
+        //.pipe(uglify())
         //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('script.js'))
         .pipe(gulp.dest('docs/dist/js'));
@@ -28,9 +28,9 @@ gulp.task('scripts', function() {
             ,'src/js/firebase/firebaseaddlocations.js'
             ,'src/js/googlemap/mapgetinput.js'
         ])
-        .pipe(babel({presets: ['es2015']}))
-        .pipe(uglify())
-        .pipe(js_obfuscator({}, ["**/jquery-*.js"]))
+        //.pipe(babel({presets: ['es2015']}))
+        //.pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('getmemory.js'))
         .pipe(gulp.dest('docs/dist/js'));
     
@@ -38,8 +38,8 @@ gulp.task('scripts', function() {
             'src/js/googlemap/memoriesmap.js'
         ])
         .pipe(babel({presets: ['es2015']}))
-        .pipe(uglify())
-        .pipe(js_obfuscator({}, ["**/jquery-*.js"]))
+        //.pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('memoriesmap.js'))
         .pipe(gulp.dest('docs/dist/js'));
 
