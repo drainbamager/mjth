@@ -10,17 +10,24 @@
           });
         }        
         function addEmotionToFirebase(data) {
-          getTimestamp(function(timestamp) {
-            data.timestamp = timestamp;
-            var ref = firebase.database().ref().child('emotions').push(data, function(err) {
-              if (err) {  // Data was not written to firebase.
-                console.warn(err);
-                Raven.captureMessage('Error adding emotion to firebase: ' + err, {level: 'error' });
-                  }
-              });
-          });
-        }
-        function getTimestamp(addClick) {
+          var arrWords = data.emotions.split(" ");
+          var intTempCounter = 0;
+            for (intTempCounter = 0; intTempCounter < arrWords.length; intTempCounter++) {
+              var strWord = arrWords[intTempCounter];
+              var intInnerCounter = intTempCounter;
+              getTimestamp(function(timestamp, inWord) {
+              data.timestamp = timestamp;
+              console.log(inWord);
+              var ref = firebase.database().ref().child('emotions').push(inWord, function(err) {
+                if (err) {  // Data was not written to firebase.
+                  console.warn(err);
+                  Raven.captureMessage('Error adding emotion to firebase: ' + err, {level: 'error' });
+                    }
+                });
+            }, strWord);
+          }
+        };
+        function getTimestamp(addClick, inParam1, inParam2) {
           // Reference to location for saving the last click time.
           var ref = firebase.database().ref().child('last_message/' + data.sender);
 
@@ -33,7 +40,7 @@
               Raven.captureMessage('Error writing last message to firebase: ' + err, {level: 'error' });
             } else {  // Write to last message was successful.
               ref.once('value', function(snap) {
-                addClick(snap.val());  // Add click with same timestamp.
+                addClick(snap.val(), inParam1, inParam2);  // Add click with same timestamp.
               }, function(err) {
                 console.warn(err);
                 Raven.captureMessage('Error adding click to firebase: ' + err, {level: 'error' });

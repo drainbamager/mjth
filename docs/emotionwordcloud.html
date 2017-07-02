@@ -189,6 +189,18 @@ function update() {
     layout.stop().words(queWords).start();
 }
 
+function getWordIndex(inword){
+    var intMatchIndex = -1;
+    for (var intTempCounter = 0; intTempCounter < queWords.length; intTempCounter++) {
+        var strCurrentWord = $.trim(queWords[intTempCounter].emotions).toUpperCase();
+        if (inword.toUpperCase() == strCurrentWord){
+            intMatchIndex = intTempCounter;
+            break;
+        }
+    }
+    return intMatchIndex;
+}
+
           var config = {
             apiKey: "AIzaSyBhodCUY9cJN_g_78a3fVXeB4ypjEe4GgY",
             authDomain: "dj2017-2804f.firebaseapp.com",
@@ -213,15 +225,25 @@ function update() {
         }
         var tblEmotions = firebase.database().ref().child('emotions');
         tblEmotions.limitToLast(5).on("child_added", function(snapshot){
-          var emotion = snapshot.val();
-          queWords.push({"emotions":emotion.emotions, "value":1});
+          var emotion = $.trim(snapshot.val());
+          var intMatchIndex = getWordIndex(emotion);
+          if (intMatchIndex>=0){//If word exists, update
+                var intCurrentWordCount = queWords[intMatchIndex].value +1;
+                queWords[intMatchIndex] = {"emotions":emotion, "value":intCurrentWordCount}
+                console.log('Updating '+ emotion + ' count' + intCurrentWordCount);
+          }
+          else{//If new word, push
+              console.log('Pushing ' + emotion);
+              queWords.push({"emotions":emotion, "value":1});
+
+          }
           //addEmotionToList(emotion.emotions);
         });
 //var counter = 0;
 var i = setInterval(function(){
     //queWords.push({"emotions":"joy " + counter.toString() , "value":1});
     update();
-    counter++;
+    //counter++;
     //if(counter === 10) {clearInterval(i);}
 }, 5000);
         </script>
