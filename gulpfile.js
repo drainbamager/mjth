@@ -35,12 +35,23 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('docs/dist/js'));
     
     gulp.src([
-            'src/js/googlemap/memoriesmap.js'
+            'src/js/firebase/firebaseauth.js'        
+            ,'src/js/googlemap/memoriesmap.js'
         ])
         .pipe(babel({presets: ['es2015']}))
         //.pipe(uglify())
         //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
         .pipe(concat('memoriesmap.js'))
+        .pipe(gulp.dest('docs/dist/js'));
+    gulp.src([
+            'src/js/firebase/firebaseauth.js'   
+            ,'src/js/wordcloud/queue.js'
+            ,'src/js/wordcloud/emotionwordcloud.js'
+        ])
+        .pipe(babel({presets: ['es2015']}))
+        //.pipe(uglify())
+        //.pipe(js_obfuscator({}, ["**/jquery-*.js"]))
+        .pipe(concat('emotionworldcloud.js'))
         .pipe(gulp.dest('docs/dist/js'));
 
 });

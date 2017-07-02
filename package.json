@@ -12,6 +12,7 @@
   "dependencies": {
     "amplitudejs": "^3.0.2",
     "bootstrap": "^3.3.7",
+    "d3-cloud": "^1.2.4",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",

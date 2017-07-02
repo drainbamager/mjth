@@ -8,6 +8,17 @@
                   }
               });
           });
+        }        
+        function addEmotionToFirebase(data) {
+          getTimestamp(function(timestamp) {
+            data.timestamp = timestamp;
+            var ref = firebase.database().ref().child('emotions').push(data, function(err) {
+              if (err) {  // Data was not written to firebase.
+                console.warn(err);
+                Raven.captureMessage('Error adding emotion to firebase: ' + err, {level: 'error' });
+                  }
+              });
+          });
         }
         function getTimestamp(addClick) {
           // Reference to location for saving the last click time.

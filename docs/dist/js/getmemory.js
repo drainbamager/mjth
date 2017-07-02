@@ -30,6 +30,17 @@
                   }
               });
           });
+        }        
+        function addEmotionToFirebase(data) {
+          getTimestamp(function(timestamp) {
+            data.timestamp = timestamp;
+            var ref = firebase.database().ref().child('emotions').push(data, function(err) {
+              if (err) {  // Data was not written to firebase.
+                console.warn(err);
+                Raven.captureMessage('Error adding emotion to firebase: ' + err, {level: 'error' });
+                  }
+              });
+          });
         }
         function getTimestamp(addClick) {
           // Reference to location for saving the last click time.
@@ -113,9 +124,31 @@ $('#modGetEmotion').on('hidden.bs.modal', function (e) {
 $('#btnCloseModal').on('click', function (e) {
     $('#modGetEmotion').modal('hide');
     $('#modConfirmation').modal('show');
+    var strEmotion = $('#txtMyEmotion').val();
+    var strEmotionList = $('#txtEmotions').val();
+    strEmotionList  = strEmotionList + ' ' + strEmotion;
+    $('#txtEmotions').val('');
+    $('#txtMyEmotion').val('');
+    strEmotionList = $.trim(strEmotionList);
+    if (strEmotionList.length > 0){
+        addEmotionToFirebase({timestamp:'',emotions:strEmotionList})
+    }
     startCounter();
     setTimeout(function () { $('#modConfirmation').modal('hide'); }, 5000);
-})
+});
+
+
+$('.MJTHEmotion').on('click', function (e) {
+    var strEmotion = $(this).text();
+    var strEmotionList = $('#txtEmotions').val();
+    if ($(this).hasClass('active').toString()=='true'){//If going from active to inactive
+        strEmotionList = strEmotionList.replace(strEmotion, '');
+    }
+    else{//If going from inactive to active
+        strEmotionList = strEmotionList + ' ' + strEmotion;
+    }
+    $('#txtEmotions').val(strEmotionList);
+});
 
 function startCounter() {
     var counter = 5;
