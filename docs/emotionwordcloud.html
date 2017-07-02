@@ -100,7 +100,6 @@ and open the template in the editor.
 
         <script>
 var fill = d3.scale.category20b();
-//var tags = [{"emotions":"joy", "value":1}];
 var queWords = FixedQueue(10, []);
 queWords.push({"emotions":"joy", "value":1});
 var w = window.innerWidth,
@@ -189,15 +188,42 @@ function update() {
     }
     layout.stop().words(queWords).start();
 }
-var counter = 0;
+
+          var config = {
+            apiKey: "AIzaSyBhodCUY9cJN_g_78a3fVXeB4ypjEe4GgY",
+            authDomain: "dj2017-2804f.firebaseapp.com",
+            databaseURL: "https://dj2017-2804f.firebaseio.com",
+            projectId: "dj2017-2804f",
+            storageBucket: "",
+            messagingSenderId: "994859069594"
+          };
+          firebase.initializeApp(config);
+          var database = firebase.database();
+         function initAuthentication(onAuthSuccess) {
+          firebase.authAnonymously(function(error, authData) {
+            if (error) {
+              console.log('Login Failed!', error);
+              Raven.captureMessage('Error loggin on to firebase: ' + error, {level: 'error' });
+
+            } else {
+              data.sender = authData.uid;
+              onAuthSuccess();
+            }
+          }, {remember: 'sessionOnly'});  // Users will get a new id for every session.
+        }
+        var tblEmotions = firebase.database().ref().child('emotions');
+        tblEmotions.limitToLast(5).on("child_added", function(snapshot){
+          var emotion = snapshot.val();
+          queWords.push({"emotions":emotion.emotions, "value":1});
+          //addEmotionToList(emotion.emotions);
+        });
+//var counter = 0;
 var i = setInterval(function(){
-    queWords.push({"emotions":"joy " + counter.toString() , "value":1});
+    //queWords.push({"emotions":"joy " + counter.toString() , "value":1});
     update();
     counter++;
-    if(counter === 10) {
-        clearInterval(i);
-    }
-}, 1000);
+    //if(counter === 10) {clearInterval(i);}
+}, 5000);
         </script>
     </body>
 </html>
