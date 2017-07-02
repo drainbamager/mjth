@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Journey to Homage - First memory emotion</title>
+        <link href="dist/css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="vis"></div>
+        <div id="header" class="text-center">
+            <div id="header-content">
+                <h1>Jamat's emotions at the time of first memory of Mowlana Hazir Imam</h1>
+            </div>
+        </div>        
         <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
         <script src="dist/js/script.js"></script>
         <script type="text/javascript" src="dist/js/bower_components/d3/d3.js"></script>
         <script type="text/javascript" src="dist/js/bower_components/d3-cloud/d3.layout.cloud.js"></script>
-
-    </head>
-    <body>
-        <div id="vis"></div>
         <script>
-
         function FixedQueue( size, initialValues ){
             initialValues = (initialValues || []);
             // Create the fixed queue array value.
@@ -100,7 +105,8 @@ and open the template in the editor.
 
         <script>
 var fill = d3.scale.category20b();
-var queWords = FixedQueue(10, []);
+var intMaxWordCount = 500;
+var queWords = FixedQueue(intMaxWordCount, []);
 queWords.push({"emotions":"joy", "value":1});
 var w = window.innerWidth,
         h = window.innerHeight;
@@ -224,7 +230,7 @@ function getWordIndex(inword){
           }, {remember: 'sessionOnly'});  // Users will get a new id for every session.
         }
         var tblEmotions = firebase.database().ref().child('emotions');
-        tblEmotions.limitToLast(5).on("child_added", function(snapshot){
+        tblEmotions.limitToLast(intMaxWordCount).on("child_added", function(snapshot){
           var emotion = $.trim(snapshot.val());
           var intMatchIndex = getWordIndex(emotion);
           if (intMatchIndex>=0){//If word exists, update
@@ -237,15 +243,13 @@ function getWordIndex(inword){
               queWords.push({"emotions":emotion, "value":1});
 
           }
-          //addEmotionToList(emotion.emotions);
         });
 //var counter = 0;
 var i = setInterval(function(){
-    //queWords.push({"emotions":"joy " + counter.toString() , "value":1});
     update();
-    //counter++;
-    //if(counter === 10) {clearInterval(i);}
 }, 5000);
         </script>
+
+
     </body>
 </html>

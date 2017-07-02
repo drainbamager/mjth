@@ -11,8 +11,7 @@
         }        
         function addEmotionToFirebase(data) {
           var arrWords = data.emotions.split(" ");
-          var intTempCounter = 0;
-            for (intTempCounter = 0; intTempCounter < arrWords.length; intTempCounter++) {
+            for (var intTempCounter = 0; intTempCounter < arrWords.length; intTempCounter++) {
               var strWord = arrWords[intTempCounter];
               var intInnerCounter = intTempCounter;
               getTimestamp(function(timestamp, inWord) {

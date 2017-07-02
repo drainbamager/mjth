@@ -22,6 +22,11 @@ function initMap() {
 function setupPage() {
     reSortEmotion();
     $('#txtMyEmotion').val('');
+    $( ".MJTHEmotion" ).each(function( index ) {
+      if($(this).hasClass('active')){
+        $(this).removeClass('active');
+      }
+    });    
     initMap();
 }
 function reSortEmotion() {

@@ -85,7 +85,7 @@ FixedQueue.splice = FixedQueue.wrapMethod("splice", FixedQueue.trimTail);
 FixedQueue.unshift = FixedQueue.wrapMethod("unshift", FixedQueue.trimTail);
 'use strict';
 
-var queEmotions = FixedQueue(250, []);
+var queEmotions = FixedQueue(500, []);
 
 function loadEmotions() {
   console.log('load emotions');
