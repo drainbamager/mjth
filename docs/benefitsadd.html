@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Journey to Homage - Impact on my family</title>
+        <link href="dist/css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .flip {
+              -webkit-perspective: 800;
+            perspective: 800;
+
+                position: relative;
+             
+            }
+            .flip .card.flipped {
+              -webkit-transform: rotatey(-180deg);
+                transform: rotatey(-180deg);
+                
+
+            }
+            .flip .card {
+
+              height: 100%;
+              -webkit-transform-style: preserve-3d;
+              -webkit-transition: 0.5s;
+                transform-style: preserve-3d;
+                transition: 0.5s;
+
+            }
+            .flip .card .face {
+
+              -webkit-backface-visibility: hidden ;
+                backface-visibility: hidden ;
+              z-index: 2;
+
+               
+            }
+            .flip .card .front {
+              position: absolute;
+               width: 100%;
+              z-index: 1;
+
+            }
+            .flip .card .back {
+              -webkit-transform: rotatey(-180deg);
+                transform: rotatey(-180deg);
+            }
+            .inner{margin:0px !important;}
+            .well.available{
+            }
+            .well.selected{
+                background-color:  #DFF0D8 !important;
+            }
+            .well strong {
+                line-height: 25px;
+            }
+            footer{
+                padding: 20px;
+            border-top: #ff0000;
+            background-color: #f5f5f5
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Begin page content -->
+        <div id="map"></div>
+        <div id="header" class="text-center">
+            <div id="header-content">
+                <h2>Think of the AKDN instituions that have impacted your family</h2>
+                <p>Select them by clicking on their names below.</p>
+            </div>
+            <br />
+            <div class="row MJTH-Padded">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="1-Aga Khan School">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Schools</strong></h4>
+                                            <br />
+                                            <i class="fa fa-child fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="1-Aga Khan School">
+                                        <div class="well well-sm selected inner">
+                                            Aga Khan Schools are part of<br />   
+                                            <h5><strong>Aga Khan Education Services</strong></h5>
+                                            
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="2-Aga Khan Clinics">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Clinics</strong></h4>
+                                            <br />
+                                            <i class="fa fa-plus fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="2-Aga Khan Clinics">
+                                        <div class="well well-sm selected inner"> 
+                                            Aga Khan Clinics are a part of
+                                            <h5><strong>Aga Khan Health Services</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="3-Aga Khan University">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>AKU or UCA<br /></strong></h4>
+                                            <br />
+                                            <i class="fa fa-university fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="3-Aga Khan University">
+                                        <div class="well well-sm selected inner"> 
+                                            <br />
+                                            <h5><strong>AKU & UCA<br /><br /></strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="4-Aga Khan Housing">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Housing<br /><br /></strong></h4>
+                                            <br />
+                                            <i class="fa fa-home fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="4-Aga Khan Housing">
+                                        <div class="well well-sm selected inner"> 
+                                            Housing projects are part of
+                                            <h5><strong>Aga Khan Agency for Microfinance</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+            </div>    
+            <div class="row MJTH-Padded">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="5-Aga Khan Scholarship">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Scholarships</strong></h4>
+                                            <br />
+                                            <i class="fa fa-graduation-cap fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="5-Aga Khan Scholarship">
+                                        <div class="well well-sm selected inner"> 
+                                            Scholarships are part of 
+                                            <h5><strong>Aga Khan Education Services<br /><br /></strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="6-Aga Khan Banks">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>DCB or Habib Bank</strong></h4>
+                                            <br />
+                                            <i class="fa fa-dollar fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="6-Aga Khan Banks">
+                                        <div class="well well-sm selected inner">
+                                            DCB & Habib Banks are part of
+                                            <h5><strong>Aga Khan Fund for Economic Development</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="7-Aga Khan Hospital">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Hospital</strong></h4>
+                                            <br />
+                                            <i class="fa fa-hospital-o fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="7-Aga Khan Hospital">
+                                        <div class="well well-sm selected inner"> 
+                                            Aga Khan Hopitals are part of 
+                                            <h5><strong>Aga Khan Health Services<br /><br /></strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="8-Aga Khan Insurance">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Jubilee Insurance</strong></h4>
+                                            <br />
+                                            <i class="fa fa-umbrella fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="8-Aga Khan Insurance">
+                                        <div class="well well-sm selected inner"> 
+                                            Jubilee Insurance is part of
+                                            <h5><strong>Aga Khan Fund for Economic Development</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+
+            </div>
+            <div class="row MJTH-Padded">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="9-Aga Khan Academy">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Aga Khan Academy</strong></h4>
+                                            <br />
+                                            <i class="fa fa-book fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="9-Aga Khan Academy">
+                                        <div class="well well-sm selected inner"> 
+                                            </br />
+                                            <h5><strong>Aga Khan Academy<br /></br /></strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="10-Aga Khan Banks">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Roshan or Indigo</strong></h4>
+                                            <br />
+                                            <i class="fa fa-mobile fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="10-Aga Khan Banks">
+                                        <div class="well well-sm selected inner"> 
+                                            Roshan or Indigo are part of
+                                            <h5><strong>Aga Khan Fund for Economic Development</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="11-Aga Khan Academy">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Serena Hotels</strong></h4>
+                                            <br />
+                                            <i class="fa fa-hotel fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="11-Aga Khan Hospital">
+                                        <div class="well well-sm selected inner"> 
+                                            Serena Hotels are part of 
+                                            <h5><strong>Aga Khan Fund for Economic Development</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="flip">
+                            <div class="card"> 
+                                <div class="face front"> 
+                                    <a href="#" class="MJTH-Benefit Select" data-mjth-benefit="12-Aga Khan Insurance">
+                                        <div class="well well-sm available inner">
+                                            <h4><strong>Pammir Energy</strong></h4>
+                                            <br />
+                                            <i class="fa fa-plug fa-3x"></i>
+                                            </br /><br />
+                                            <span class="text-muted">Click to select</span>
+                                        </div>
+                                    </a>
+                                </div> 
+                                <div class="face back"> 
+                                    <a href="#" class="MJTH-Benefit Deselect" data-mjth-benefit="12-Aga Khan Insurance">
+                                        <div class="well well-sm selected inner"> 
+                                            Pamir Energy is part of
+                                            <h5><strong>Aga Khan Fund for Economic Development</strong></h5>
+                                            <i class="fa fa-check fa-3x"></i>
+                                            </br />
+                                            <span class="text-muted">Click to deselect</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+                </div>
+
+            </div>        
+        <footer class="footer">
+          <div class="container">
+            <button class="btn btn-default btn-lg pull-left">Clear</button>
+            <button id="btnSubmit" class="btn btn-default btn-success btn-lg pull-right">Complete</button>
+            <input type="hidden" name="txtOrgs" id="txtOrgs" value="" />
+          </div>
+        </footer>        
+        </div>    
+       <div id="modConfirmation" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>
+                    <h2 class="text-muted text-center">Thanks you.</h2>
+                    <h4 class="text-muted text-center">Your input has been added to the graph on the TV above.</h4>
+                    <h1 class="text-center"><i class="text-center text-muted fa fa-smile-o fa-5x"></i></h1>
+                    <h5 class="text-muted text-center">This window will automatically close in <span id="spCounter">5</span> seconds.</h5>
+                </p>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+       <div id="modError" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>
+                    <h2 class="text-muted text-center">Please select at least one instituion.</h2>
+                    <h4 class="text-muted text-center">Your input has not been saved.</h4>
+                    <h1 class="text-center"><i class="text-center text-muted fa fa-exclamation-triangle  fa-4x"></i></h1>
+                    <h5 class="text-muted text-center">&nbsp;</h5>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Go back</button>
+              </div>              
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+ 
+        <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+        <script src="dist/js/script.js"></script>
+        <script>
+                $('.flip').click(function(){
+                    $(this).find('.card').toggleClass('flipped');
+                });
+
+                $('#toggle').on('click' ,function(){
+                    $('.card').toggleClass('flipped');
+                });
+
+                $('#front').on('click' ,function(){
+                    $('.card').addClass('flipped');
+                });
+
+                $('#back').on('click' ,function(){
+                    $('.card').removeClass('flipped');
+                });
+                $('#btnSubmit').on('click' ,function(){
+                    var strOrgs = $.trim($('#txtOrgs').val());
+                    if (strOrgs.length >0){
+                        $('#modConfirmation').modal('show');
+                        startCounter();
+
+                    }
+                    else{
+                        $('#modError').modal('show');
+                    }
+                });
+                $('.MJTH-Benefit').on('click' ,function(){
+                    var strOrgs = $.trim($('#txtOrgs').val());
+                    var strClickedOrg = $(this).attr('data-mjth-benefit');
+                    if($(this).hasClass('Deselect').toString() == 'true')
+                    {//If deselect is clicked
+                        strOrgs = strOrgs.replace(strClickedOrg, '');
+                    }
+                    else{
+                       strOrgs = strOrgs + ', ' + strClickedOrg;
+                    }
+                    strOrgs = strOrgs.replace(',,', '');
+                    strOrgs = strOrgs.replace(', ,', ',');
+                    strOrgs = strOrgs.replace(',  ,', ',');
+                    $('#txtOrgs').val(strOrgs);
+                    console.log($('#txtOrgs').val());
+                });
+
+                function resetPage(){
+                    $('#modConfirmation').modal('hide');
+                    $('#modError').modal('hide');
+                    $( ".card" ).each(function() {
+                        if($(this).hasClass('flipped').toString() == 'true')
+                        {
+                            $(this).removeClass('flipped');
+                        }
+                    });        
+                    $('#txtOrgs').val('');            
+                }
+                function startCounter() {
+                    var counter = 5;
+                    id = setInterval(function () {
+                        counter--;
+                        if (counter <= 0) {
+                            resetPage();
+                            clearInterval(id);
+                        } else {
+                            $('#spCounter').html(counter.toString());
+                        }
+                    }, 1000);
+                }                
+        </script>
+    </body>
+</html>
