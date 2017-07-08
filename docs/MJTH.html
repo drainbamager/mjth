@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container { 
+	position:relative;
+    margin:auto;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+#iframetop {
+    float: left;
+    width:100%;
+    margin: 0;
+    height: 50%;
+}
+#iframebottomleft {
+	clear: left;
+    float: left;
+    width:50%;
+    height: 50%;
+}
+#iframebottomright {
+    float: right;
+    width:50%;
+    height: 50%;
+}
+#mainiframe {
+	width: 100%;
+    height: 100%;
+    border:0;
+    overflow: hidden;
+}
+
+#h1 {
+	font-size: 11px;
+}
+</style>
+</head>
+<body>
+
+<div id="container">
+<div id="iframetop">
+<iframe id="mainiframe" src="https://mominaripublic.github.io/mjth/emotionwordcloud.html"></iframe>
+</div>
+
+<div id="iframebottomleft">
+<iframe id="mainiframe" src="https://mominaripublic.github.io/mjth/memoriesmap.html"></iframe>
+</div>
+
+<div id="iframebottomright">
+<iframe id="mainiframe" src="https://mominaripublic.github.io/mjth/benefitsview.html"></iframe>
+</div>
+</div>
+
+<script type='text/javascript'>
+$('mainiframe').load( function() {
+    $('iframe').contents().find("header-content")
+      .append($("<style type='text/css'>  #header{display:none;}  </style>"));
+});
+</script>
+</body>
+</html>
